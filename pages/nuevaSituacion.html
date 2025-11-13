@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src ="../js/main.js"></script>
+    <title>Formulario de Asignacion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    
+<div id="nuevaSituacion">
+  <h1>CARGA DE NUEVA SITUACION</h1>
+
+<form>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Fecha de Carga</label>
+    <input type="date" class="form-select"  id= "fechaCarga" aria-label="Disabled select example" disabled>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombreInformador" placeholder="Pepita">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="apellidoInformador" placeholder="Perez">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Entidad que representa</label>
+    <select class="form-select" aria-label="Default select example">
+    <option value="1">Escuela N 4</option>
+    <option value="2">Hospital San Miguel</option>
+    <option value="3">Merendero familia</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Nombre del menor</label>
+    <input type="text" class="form-control" id="nombreMenor" placeholder="Pirulito">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Fecha de nacimiento del menor</label>
+    <input type="date" class="form-control" id="fechaNacimiento" placeholder="10/10/1000">
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Comentario</label>
+    <textarea class="form-control" id="comentario" rows="3">   
+    </textarea>
+</div>
+</div>
+    <button type="submit">Enviar</button>
+</form>
+<a href="../index.html">Volver al inicio</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

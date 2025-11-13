@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="./assets/styles/style.css">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="icon" href="/assets/img/icono2.ico" type="image/x-icon">
-     <!--
     <meta name="description" content="Res-Q es una plataforma de gestión de casos sociales que ayuda a trabajadores sociales a centralizar información, agilizar el seguimiento de situaciones de vulnerabilidad, generar reportes y mejorar la comunicación con instituciones.">
     <meta name="keywords" content="Res-Q, gestión de casos sociales, CRM social, trabajadores sociales, niños vulnerables,infancias,San Miguel,seguimiento de casos, informes sociales, notificaciones en tiempo real, geolocalización social, sitio web, aplicacion, Argentina, Instagram, X, Facebook, Tiktok">
     <meta name="author" content="Lourdes Nunes">
     <meta name="owner" content="ResQ SA">
--->
 </head>
 <body>
 
+  <h1>Gestion de Situaciones</h1>
+    <h2>Casos sin asignar</h2>
+<div id="SituacionesSinAsignar"></div>
 
-<h1>Gestion de Situacion</h1>
-<div id="Situaciones">
-</div>
+  <h2>Casos asignados</h2>
+<div id="SituacionesAsignadas"></div>
 
 <div class="modal fade" id="modalAsignar" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -36,14 +36,14 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="btnConfirmarAsignacion">Confirmar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btnConfirmarAsignacion">Confirmar</button>
       </div>
     </div>
   </div>
 </div>
 
+<a href="./pages/nuevaSituacion.html">Carga una nueva Situacion</a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
-

@@ -50,8 +50,9 @@ removeChild(): Este método elimina un nodo hijo de un elemento.
 remove(): Elimina directamente el nodo seleccionado.
 
 */
-
+const asignadas = [];
 let situacionActual = null;
+
 const estados = [
   {
     idEstado: 1,
@@ -111,52 +112,43 @@ const entidades = [
   }
 
 ];
-const roles = [
-  {
-    idRol :1 , 
-    Desripcion:"Administrador" 
-  },
-  {
-    idRol :2 , 
-    Desripcion:"Operador" 
-  }
-];
+
 const usuarios = [
   {
   idUsuario: 1,
   nombre: "Lourdes",
   apellido: "Nunes" ,
   mail: "lula@resq.com",
-  contra: "",
-  idRol:1
+  contra: "AdminLula",
+  idRol:"Administrador"
 },
 {
   idUsuario: 2,
   nombre: "Agustin",
   apellido: "Bruno" ,
   mail: "agus@resq.com",
-  contra: "",
-  idRol: 1
+  contra: "AdminAgus",
+  idRol: "Administrador"
 },
 {
   idUsuario:3,
   nombre: "Malena",
   apellido: "Chiuzzo" ,
   mail: "male@resq.com",
-  contra: "",
-  idRol: 2
+  contra: "123",
+  idRol: "Operador"
 },
 {
   idUsuario: 4,
   nombre: "Jimena",
   apellido: "Perez" ,
   mail: "jime@resq.com",
-  contra: "",
-  idRol: 2
+  contra: "321",
+  idRol: "Operador"
 }
 ];
 
-const situaciones = 
+let situaciones = 
 [
   {
     idSituacion: 1,
@@ -165,13 +157,10 @@ const situaciones =
     telefonoInformador: 1130859845,
     nombreMenor: "Facundo Lopez",
     fechaNacimiento: "2017-06-10",
-    edad: 8,
-    calle: "Muñoz",
-    altura: "503",
-    codigoPostal: "1663",
+    direccion: "Muñoz 503",
     nombreEntidad: "Escuela Primaria N4",
     comentarios: "Niña de 8 años encontrada sola. Menor en situación de abandono. Encontrada en la vía pública. Falta al colegio ",
-    fechaCarga:"2025-03-12",
+    fechaCarga:"2024-03-12",
     idEntidad: 1,
     idEstado: 1,
     idPrioridad: 1,
@@ -179,19 +168,16 @@ const situaciones =
   },
     {
     idSituacion: 2,
-    nombreInformador: "María Elena",
-    apellidoInformador: "Pérez",
+    nombreInformador: "Elena",
+    apellidoInformador: "Miller",
     telefonoInformador: 1130859845,
     nombreMenor: "Maite Dominguez",
-    fechaNacimiento: "2017-06-10",
-    edad: 14,
-    calle: "Serano",
-    altura: "3009",
-    codigoPostal: "1663",
-    nombreEntidad: "Escuela Secundaria N15",
-    comentarios: "Niña de 8 años encontrada sola. Menor en situación de abandono. Encontrada en la vía pública. Falta al colegio ",
-    fechaCarga:"2025-03-12",
-    idEntidad: 1,
+    fechaNacimiento: "2011-06-10",
+    direccion: "Serano 3009",
+    nombreEntidad: "Hospital",
+    comentarios: "Problemas con el consumo de estupefacientes.",
+    fechaCarga:"2017-11-12",
+    idEntidad: 2,
     idEstado: 1,
     idPrioridad: 2,
     idUsuario: 0
@@ -202,11 +188,8 @@ const situaciones =
     apellidoInformador: "Paz",
     telefonoInformador: 1130859845,
     nombreMenor: " Francisco Gutierrez",
-    fechaNacimiento: "2017-06-10",
-    edad: 8,
-    calle: "Mitre",
-    altura: "50",
-    codigoPostal: "1663",
+    fechaNacimiento: "2015-03-25",
+    direccion: "Blasco Ibañez 2353",
     nombreEntidad: "Escuela Primaria N4",
     comentarios: "Niña de 8 años encontrada sola. Menor en situación de abandono. Encontrada en la vía pública. Falta al colegio ",
     fechaCarga:"2025-03-12",
@@ -214,91 +197,208 @@ const situaciones =
     idEstado: 1,
     idPrioridad: 3,
     idUsuario: 0
+  },
+  {
+    idSituacion: 4,
+    nombreInformador: "Macarena",
+    apellidoInformador: "Lago",
+    nombreMenor: "Maia Gines",
+    fechaNacimiento: "2013-05-07",
+    direccion: "Mitre 50",
+    nombreEntidad: "Escuela Primaria N4",
+    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    fechaCarga:"2023-07-12",
+    idEntidad: 1,
+    idEstado: 1,
+    idPrioridad: 3,
+    idUsuario: 0
+  },
+  {
+    idSituacion: 5,
+    nombreInformador: "Macarena",
+    apellidoInformador: "Lago",
+    nombreMenor: "Nicolas Franco",
+    fechaNacimiento: "2013-05-07",
+    direccion: "Mitre 50",
+    nombreEntidad: "Escuela Primaria N4",
+    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    fechaCarga:"2023-07-12",
+    idEntidad: 1,
+    idEstado: 1,
+    idPrioridad: 3,
+    idUsuario: 0
+  }
+  ,
+  {
+    idSituacion: 6,
+    nombreInformador: "Macarena",
+    apellidoInformador: "Lago",
+    nombreMenor: "Ines Gutierrez",
+    fechaNacimiento: "2013-05-07",
+    direccion: "Mitre 50",
+    nombreEntidad: "Escuela Primaria N4",
+    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    fechaCarga:"2023-07-12",
+    idEntidad: 1,
+    idEstado: 1,
+    idPrioridad: 3,
+    idUsuario: 0
+  },
+  {
+    idSituacion: 7,
+    nombreInformador: "Macarena",
+    apellidoInformador: "Lago",
+    nombreMenor: "Tomas Ferro",
+    fechaNacimiento: "2013-05-07",
+    direccion: "Mitre 50",
+    nombreEntidad: "Escuela Primaria N4",
+    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    fechaCarga:"2023-07-12",
+    idEntidad: 1,
+    idEstado: 1,
+    idPrioridad: 3,
+    idUsuario: 0
   }
 
 ];
-          
 
 
-//ALGO ASI TENGO QUE HACER CON LAS ASIGNACIONES PENSAR LOGICA PRIMERO.
+//FUNCIONES PARA Login - PENSAR Y COMPLETAR UN BUEN LOGIN
+
+    
+//FUNCIONES PARA index.html
+
+function calcularEdades(fechaNacimiento){
+const fechaNac = new Date(fechaNacimiento)
+const añoActual = new Date()
+let edad = añoActual.getFullYear() - fechaNac.getFullYear()
+return edad;
+}
+
 
 function imprimirSituacionesEnHTML(situaciones) {
-  	const contenedor = document.getElementById("Situaciones");
-for (const situacion of situaciones) {
-		const table = document.createElement("table");
-    table.innerHTML = `<table class="table">
-          <thead>
+
+const noAsignadas = situaciones.filter(situacion => situacion.idUsuario === 0)
+const contenedor = document.getElementById("SituacionesSinAsignar");
+for (const situacion of noAsignadas) {
+  const edadSituacion = calcularEdades(situacion.fechaNacimiento)
+	const table = document.createElement("table");
+    table.innerHTML = `
+    <table class="table">
+      <thead>
             <tr>
               <th scope="col">Nombre menor</th>
               <th scope="col">Edad del menor</th>
+              <th scope="col">Comentarios</th>
               <th scope="col">Direccion</th>
               <th scope="col">Nombre Entidad</th>
             </tr>
             <tr>
               <th scope="row">${situacion.nombreMenor}</th>
-              <td>${situacion.edad}</td>
-              <td>${situacion.calle}  ${situacion.altura}</td>
+              <td>${edadSituacion} años</td>
+              <td>${situacion.comentarios}</td>
+              <td>${situacion.direccion}</td>
               <td>${situacion.nombreEntidad}</td>
               <button id="${situacion.nombreMenor}${situacion.idSituacion}"data-bs-toggle="modal" data-bs-target="#modalAsignar">Asignar</button>
             </tr>
-          </thead>
-          </table>`			
+      </thead>
+    </table>`			
           contenedor.appendChild(table)
           const boton = document.getElementById(`${situacion.nombreMenor}${situacion.idSituacion}`)
           boton.addEventListener("click", () => AsignarSituacion(situacion) )
   }
 }
 
+function mostrarAsignadas(situaciones){
+const asignadas = situaciones.filter(situacion => situacion.idUsuario != 0)
+const contenedor = document.getElementById("SituacionesAsignadas");
+for (const situacion of asignadas) {
+const edadSituacion = calcularEdades(situacion.fechaNacimiento)
+const responsable = usuarios.find(u => u.idUsuario === parseInt(situacion.idUsuario));
+
+		const table = document.createElement("table");
+    table.innerHTML = `
+    <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre menor</th>
+              <th scope="col">Edad del menor</th>
+              <th scope="col">Comentarios</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Nombre Entidad</th>
+              <th scope="col">Usuario a cargo</th>
+            </tr>
+            <tr>
+              <th scope="row">${situacion.nombreMenor}</th>
+              <td>${edadSituacion} Años</td>
+              <td>${situacion.comentarios}</td>
+              <td>${situacion.direccion}</td>
+              <td>${situacion.nombreEntidad}</td>
+              <td>${situacion.idUsuario} - ${responsable.nombre} ${responsable.apellido}</td>
+            </tr>
+          </thead>
+          </table>`			
+          contenedor.appendChild(table)
+}
+}
+
 function AsignarSituacion(situacion){
 //MOSTRAR USUARIOS DISPONIBLES PARA ASIGNAR LA SITUACION.
+
   //Esto llama al modal y se alimenta con el array de USUARIOS.
   //Aca llamo al localstorage y tambien muestro que usuario tiene casos asignados
-  situacionActual = situacion;
-  const contenedor = document.getElementById("selectUsuarios");
-    contenedor.innerHTML = ""
-    for (const usuario of usuarios) {
+situacionActual = situacion;
+const contenedor = document.getElementById("selectUsuarios");
+contenedor.innerHTML = ""
+for (const usuario of usuarios) {
       const menu = document.createElement("option")
       menu.value = usuario.idUsuario
       menu.innerHTML = `${usuario.idUsuario}-${usuario.nombre} ${usuario.apellido}`
       contenedor.appendChild(menu)
-    }
-
+}
 }
 const botonConfirmar = document.getElementById("btnConfirmarAsignacion")
 botonConfirmar.addEventListener("click", () => {
-  const select = document.getElementById("selectUsuarios")
-  const usuarioSeleccionado = select.value
-  
-  situacionActual.idUsuario = usuarioSeleccionado
-  
-  localStorage.setItem('situaciones', JSON.stringify(situaciones))
+const select = document.getElementById("selectUsuarios")
+const usuarioSeleccionado = select.value
+situacionActual.idUsuario = parseInt(usuarioSeleccionado)
+localStorage.setItem('situaciones', JSON.stringify(situaciones))
+const sinAsignar = document.getElementById("SituacionesSinAsignar")
+sinAsignar.innerHTML = ""
 
-  const modalElement = document.getElementById('modalAsignar')
-  const modalInstance = bootstrap.Modal.getInstance(modalElement)
-  modalInstance.hide()
-  
-  const contenedorSituaciones = document.getElementById("Situaciones")
-  contenedorSituaciones.innerHTML = ""
-  imprimirSituacionesEnHTML(situaciones)
+  const asignadas = document.getElementById("SituacionesAsignadas")
+  asignadas.innerHTML = ""
+  imprimirSituacionesEnHTML(situaciones);
+  mostrarAsignadas(situaciones);
 })
 
+let situacionesGuardadas = JSON.parse(localStorage.getItem('situaciones'));
 
-imprimirSituacionesEnHTML(situaciones)
-//USAR MAP PARA BUSCAR SITUACIONES POR USUARIOS
+if (situacionesGuardadas != null) {
+    situaciones = situacionesGuardadas;   
+} else {
+    situaciones = situaciones; 
+}
+imprimirSituacionesEnHTML(situaciones);
+mostrarAsignadas(situaciones);
 
-//USAR FILTER? PARA MOSTRAR SITUACIONES POR USUARIO? O POR ESTADO 
-//CONTEO DE SITUACIONES SEGUN EL ESTADO EN EL QUE SE ENCUENTRAN Y SEGUN PRIORIDAD. VER COMO ESCUPI PO PANTALLA
 
 const conteoEstado = situaciones.reduce(function(conteo, situacion) {
     conteo[situacion.idEstado] = (conteo[situacion.idEstado] || 0) + 1;
     return conteo;
 }, {});
 
-console.log(conteoEstado);
+
 
 const conteoPrioridades = situaciones.reduce(function(conteo, situacion) {
     conteo[situacion.idPrioridad] = (conteo[situacion.idPrioridad] || 0) + 1;
     return conteo;
 }, {});
-console.log(conteoPrioridades);
 
+
+//puedeasignarse()
+
+//FUNCIONES PARA nuevaSituacion
+//const fechaCarga = document.getElementById("fechaCarga")
+//const Hoy = new Date()
+//fechaCarga.value = Hoy.toISOString().split('T')[0] 
