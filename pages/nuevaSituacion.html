@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src ="../js/main.js"></script>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <script defer src ="../js/formulario.js"></script>
     <title>Formulario de Asignacion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
@@ -12,22 +13,22 @@
 <div id="nuevaSituacion">
   <h1>CARGA DE NUEVA SITUACION</h1>
 
-<form>
+<form id="formNuevaSituacion">
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Fecha de Carga</label>
     <input type="date" class="form-select"  id= "fechaCarga" aria-label="Disabled select example" disabled>
 </div>
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="nombreInformador" placeholder="Pepita">
+    <input type="text" class="form-control" id="nombreInformador" placeholder="Pepita" required>
 </div>
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-    <input type="text" class="form-control" id="apellidoInformador" placeholder="Perez">
+    <input type="text" class="form-control" id="apellidoInformador" placeholder="Perez" required>
 </div>
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Entidad que representa</label>
-    <select class="form-select" aria-label="Default select example">
+    <select id="selectEntidad" class="form-select"aria-label="Default select example" required>
     <option value="1">Escuela N 4</option>
     <option value="2">Hospital San Miguel</option>
     <option value="3">Merendero familia</option>
@@ -35,21 +36,26 @@
 </div>
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Nombre del menor</label>
-    <input type="text" class="form-control" id="nombreMenor" placeholder="Pirulito">
+    <input type="text" class="form-control" id="nombreMenor" placeholder="Pirulito" required>
 </div>
 <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Fecha de nacimiento del menor</label>
+    <label for="exampleFormControlInput1" class="form-label">Fecha de nacimiento del menor</label required>
     <input type="date" class="form-control" id="fechaNacimiento" placeholder="10/10/1000">
 </div>
 <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Direccion</label>
+    <input type="text" class="form-control" id="direccion" placeholder="Calle falsa 123" required>
+</div>
+<div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Comentario</label>
-    <textarea class="form-control" id="comentario" rows="3">   
+    <textarea class="form-control" id="comentario" rows="3" required>   
     </textarea>
 </div>
 </div>
-    <button type="submit">Enviar</button>
+    <button type="submit" class="btn btn-success">Enviar Nueva Situación</button>
 </form>
-<a href="../index.html">Volver al inicio</a>
+</div>
+<a href="../index.html" class="btn btn-primary">Volver al inicio</a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

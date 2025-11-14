@@ -50,9 +50,8 @@ removeChild(): Este método elimina un nodo hijo de un elemento.
 remove(): Elimina directamente el nodo seleccionado.
 
 */
-const asignadas = [];
-let situacionActual = null;
 
+/*No esta en uso aun 
 const estados = [
   {
     idEstado: 1,
@@ -88,30 +87,17 @@ const prioridades = [
   }
 
 ];
-const entidades = [
-  {
-    idEntidad: 1,
-    nombre:"Escuela N 4",
-    direccion:"Av. Primera Junta 1108, San Miguel",
-    mail:"escuelacuatro@gmail.com",
-    telefono:"44552266"
-  },  
-  {
-    idEntidad: 2,
-    nombre:"Hospital San Miguel",
-    direccion:"Av. Primera Junta 1025, San Miguel",
-    mail:"hospital@gmail.com",
-    telefono:"44550000"
-  },
-  {
-    idEntidad: 3,
-    nombre:"Merendero familia",
-    direccion:"Av.Mitre 489, San Miguel",
-    mail:"merendero@gmail.com",
-    telefono:"44552244"
-  }
+Contadores- usar en alguna funcion.
+const conteoEstado = situaciones.reduce(function(conteo, situacion) {
+    conteo[situacion.idEstado] = (conteo[situacion.idEstado] || 0) + 1;
+    return conteo;
+}, {});
 
-];
+const conteoPrioridades = situaciones.reduce(function(conteo, situacion) {
+    conteo[situacion.idPrioridad] = (conteo[situacion.idPrioridad] || 0) + 1;
+    return conteo;
+}, {});
+ */
 
 const usuarios = [
   {
@@ -174,7 +160,7 @@ let situaciones =
     nombreMenor: "Maite Dominguez",
     fechaNacimiento: "2011-06-10",
     direccion: "Serano 3009",
-    nombreEntidad: "Hospital",
+    nombreEntidad: "Hospital San Miguel",
     comentarios: "Problemas con el consumo de estupefacientes.",
     fechaCarga:"2017-11-12",
     idEntidad: 2,
@@ -190,7 +176,7 @@ let situaciones =
     nombreMenor: " Francisco Gutierrez",
     fechaNacimiento: "2015-03-25",
     direccion: "Blasco Ibañez 2353",
-    nombreEntidad: "Escuela Primaria N4",
+    nombreEntidad: "Merendero Familia",
     comentarios: "Niña de 8 años encontrada sola. Menor en situación de abandono. Encontrada en la vía pública. Falta al colegio ",
     fechaCarga:"2025-03-12",
     idEntidad: 1,
@@ -203,10 +189,10 @@ let situaciones =
     nombreInformador: "Macarena",
     apellidoInformador: "Lago",
     nombreMenor: "Maia Gines",
-    fechaNacimiento: "2013-05-07",
+    fechaNacimiento: "2010-05-07",
     direccion: "Mitre 50",
-    nombreEntidad: "Escuela Primaria N4",
-    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    nombreEntidad: "Hospital San Miguel",
+    comentarios: "Ideación suicida.",
     fechaCarga:"2023-07-12",
     idEntidad: 1,
     idEstado: 1,
@@ -218,10 +204,10 @@ let situaciones =
     nombreInformador: "Macarena",
     apellidoInformador: "Lago",
     nombreMenor: "Nicolas Franco",
-    fechaNacimiento: "2013-05-07",
+    fechaNacimiento: "2018-05-07",
     direccion: "Mitre 50",
     nombreEntidad: "Escuela Primaria N4",
-    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    comentarios: "Víctima de bullying / ciberacoso.",
     fechaCarga:"2023-07-12",
     idEntidad: 1,
     idEstado: 1,
@@ -231,11 +217,11 @@ let situaciones =
   ,
   {
     idSituacion: 6,
-    nombreInformador: "Macarena",
-    apellidoInformador: "Lago",
+    nombreInformador: "Milagros",
+    apellidoInformador: "Enriquez",
     nombreMenor: "Ines Gutierrez",
     fechaNacimiento: "2013-05-07",
-    direccion: "Mitre 50",
+    direccion: "Gaspar Campos 1895",
     nombreEntidad: "Escuela Primaria N4",
     comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
     fechaCarga:"2023-07-12",
@@ -246,13 +232,13 @@ let situaciones =
   },
   {
     idSituacion: 7,
-    nombreInformador: "Macarena",
-    apellidoInformador: "Lago",
+    nombreInformador: "Alfonso",
+    apellidoInformador: "Horten",
     nombreMenor: "Tomas Ferro",
-    fechaNacimiento: "2013-05-07",
-    direccion: "Mitre 50",
-    nombreEntidad: "Escuela Primaria N4",
-    comentarios: "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+    fechaNacimiento: "2019-05-07",
+    direccion: "Anchorena 5250",
+    nombreEntidad: "Merendero Familia",
+    comentarios: "Ambiente hostil/violento en el hogar.",
     fechaCarga:"2023-07-12",
     idEntidad: 1,
     idEstado: 1,
@@ -262,12 +248,20 @@ let situaciones =
 
 ];
 
+let guardadas = JSON.parse(localStorage.getItem("Asignadas")) || [];
+let sinAsignar = JSON.parse(localStorage.getItem("NoAsignadas")) || [];
+let nuevas = JSON.parse(localStorage.getItem("NuevasSituaciones")) || [];
 
-//FUNCIONES PARA Login - PENSAR Y COMPLETAR UN BUEN LOGIN
+if (sinAsignar.length > 0) {
+    situaciones = sinAsignar;
+} else {
+    situaciones 
+}
+situaciones = situaciones.concat(nuevas)
+situaciones = situaciones.filter(situacion => !guardadas.some(guardada => parseInt(guardada.idSituacion) === parseInt(situacion.idSituacion)))
 
-    
+  
 //FUNCIONES PARA index.html
-
 function calcularEdades(fechaNacimiento){
 const fechaNac = new Date(fechaNacimiento)
 const añoActual = new Date()
@@ -275,10 +269,8 @@ let edad = añoActual.getFullYear() - fechaNac.getFullYear()
 return edad;
 }
 
-
 function imprimirSituacionesEnHTML(situaciones) {
-
-const noAsignadas = situaciones.filter(situacion => situacion.idUsuario === 0)
+const noAsignadas = situaciones.filter(situacion => parseInt(situacion.idUsuario) === 0)
 const contenedor = document.getElementById("SituacionesSinAsignar");
 for (const situacion of noAsignadas) {
   const edadSituacion = calcularEdades(situacion.fechaNacimiento)
@@ -309,12 +301,13 @@ for (const situacion of noAsignadas) {
   }
 }
 
-function mostrarAsignadas(situaciones){
-const asignadas = situaciones.filter(situacion => situacion.idUsuario != 0)
+function mostrarAsignadas(guardadas){
+
 const contenedor = document.getElementById("SituacionesAsignadas");
-for (const situacion of asignadas) {
+  contenedor.innerHTML = "";
+for (const situacion of guardadas) {
 const edadSituacion = calcularEdades(situacion.fechaNacimiento)
-const responsable = usuarios.find(u => u.idUsuario === parseInt(situacion.idUsuario));
+const responsable = usuarios.find(usuairo => usuairo.idUsuario === parseInt(situacion.idUsuario));
 
 		const table = document.createElement("table");
     table.innerHTML = `
@@ -341,64 +334,72 @@ const responsable = usuarios.find(u => u.idUsuario === parseInt(situacion.idUsua
           contenedor.appendChild(table)
 }
 }
+function puedeAsignarse(idUsuario) {
+idUsuario = parseInt(idUsuario);
+const cantidad = guardadas.reduce((total, situacion) => {
+  if (parseInt(situacion.idUsuario) === idUsuario) {
+            total++;
+  }
+  return total;
+  }, 0)
 
+    return cantidad < 3;
+}
 function AsignarSituacion(situacion){
-//MOSTRAR USUARIOS DISPONIBLES PARA ASIGNAR LA SITUACION.
-
-  //Esto llama al modal y se alimenta con el array de USUARIOS.
-  //Aca llamo al localstorage y tambien muestro que usuario tiene casos asignados
 situacionActual = situacion;
 const contenedor = document.getElementById("selectUsuarios");
 contenedor.innerHTML = ""
 for (const usuario of usuarios) {
-      const menu = document.createElement("option")
-      menu.value = usuario.idUsuario
-      menu.innerHTML = `${usuario.idUsuario}-${usuario.nombre} ${usuario.apellido}`
-      contenedor.appendChild(menu)
+  const menu = document.createElement("option")
+  menu.value = usuario.idUsuario
+  menu.innerHTML = `${usuario.idUsuario}-${usuario.nombre} ${usuario.apellido}`
+
+if (!puedeAsignarse(parseInt(usuario.idUsuario))) {
+  menu.disabled = true;
+  menu.style.color = "gray";
+  menu.innerHTML +="(Maximo alcanzado)"
+}
+contenedor.appendChild(menu)
 }
 }
+const botonBorrar = document.getElementById("btnBorrarAsignadas")
+botonBorrar.addEventListener("click", () => {
+  for (const situacion of guardadas) {
+        situacion.idUsuario = 0;  //
+    }
+situaciones = situaciones.concat(guardadas);
+guardadas = [];
+localStorage.clear()
+document.getElementById("SituacionesSinAsignar").innerHTML = "";
+document.getElementById("SituacionesAsignadas").innerHTML = "";
+imprimirSituacionesEnHTML(situaciones);  
+mostrarAsignadas(guardadas);
+})
+
 const botonConfirmar = document.getElementById("btnConfirmarAsignacion")
 botonConfirmar.addEventListener("click", () => {
 const select = document.getElementById("selectUsuarios")
 const usuarioSeleccionado = select.value
+
 situacionActual.idUsuario = parseInt(usuarioSeleccionado)
-localStorage.setItem('situaciones', JSON.stringify(situaciones))
+guardadas.push(situacionActual)
+
+
+situaciones = situaciones.filter(situacion => parseInt(situacion.idSituacion) !== parseInt(situacionActual.idSituacion))
+localStorage.setItem('Asignadas', JSON.stringify(guardadas))
+localStorage.setItem('NoAsignadas', JSON.stringify(situaciones)) 
+
 const sinAsignar = document.getElementById("SituacionesSinAsignar")
 sinAsignar.innerHTML = ""
 
-  const asignadas = document.getElementById("SituacionesAsignadas")
-  asignadas.innerHTML = ""
-  imprimirSituacionesEnHTML(situaciones);
-  mostrarAsignadas(situaciones);
+const asignadas = document.getElementById("SituacionesAsignadas")
+asignadas.innerHTML = ""
+imprimirSituacionesEnHTML(situaciones);
+mostrarAsignadas(guardadas);
 })
 
-let situacionesGuardadas = JSON.parse(localStorage.getItem('situaciones'));
-
-if (situacionesGuardadas != null) {
-    situaciones = situacionesGuardadas;   
-} else {
-    situaciones = situaciones; 
-}
 imprimirSituacionesEnHTML(situaciones);
-mostrarAsignadas(situaciones);
-
-
-const conteoEstado = situaciones.reduce(function(conteo, situacion) {
-    conteo[situacion.idEstado] = (conteo[situacion.idEstado] || 0) + 1;
-    return conteo;
-}, {});
+mostrarAsignadas(guardadas);
 
 
 
-const conteoPrioridades = situaciones.reduce(function(conteo, situacion) {
-    conteo[situacion.idPrioridad] = (conteo[situacion.idPrioridad] || 0) + 1;
-    return conteo;
-}, {});
-
-
-//puedeasignarse()
-
-//FUNCIONES PARA nuevaSituacion
-//const fechaCarga = document.getElementById("fechaCarga")
-//const Hoy = new Date()
-//fechaCarga.value = Hoy.toISOString().split('T')[0] 
