@@ -1,0 +1,177 @@
+{
+  "Usuarios": [
+    {
+      "idUsuario": 1,
+      "nombre": "Lourdes",
+      "apellido": "Nunes",
+      "mail": "lula@resq.com",
+      "contra": "AdminLula",
+      "idRol": "Administrador"
+    },
+    {
+      "idUsuario": 2,
+      "nombre": "Agustin",
+      "apellido": "Bruno",
+      "mail": "agus@resq.com",
+      "contra": "AdminAgus",
+      "idRol": "Administrador"
+    },
+    {
+      "idUsuario": 3,
+      "nombre": "Malena",
+      "apellido": "Chiuzzo",
+      "mail": "male@resq.com",
+      "contra": "123",
+      "idRol": "Operador"
+    },
+    {
+      "idUsuario": 4,
+      "nombre": "Jimena",
+      "apellido": "Perez",
+      "mail": "jime@resq.com",
+      "contra": "321",
+      "idRol": "Operador"
+    }
+  ],
+  "Situaciones": [
+    {
+      "idSituacion": 1,
+      "nombreInformador": "María Elena",
+      "apellidoInformador": "Pérez",
+      "telefonoInformador": 1130859845,
+      "nombreMenor": "Facundo Lopez",
+      "fechaNacimiento": "2017-06-10",
+      "direccion": "Muñoz 503",
+      "nombreEntidad": "Escuela Primaria N4",
+      "comentarios": "Niña de 8 años encontrada sola. Menor en situación de abandono. Encontrada en la vía pública. Falta al colegio ",
+      "fechaCarga": "2024-03-12",
+      "idEntidad": 1,
+      "idEstado": 1,
+      "idPrioridad": 1,
+      "idUsuario": 0
+    },
+    {
+      "idSituacion": 2,
+      "nombreInformador": "Elena",
+      "apellidoInformador": "Miller",
+      "telefonoInformador": 1130859845,
+      "nombreMenor": "Maite Dominguez",
+      "fechaNacimiento": "2011-06-10",
+      "direccion": "Serano 3009",
+      "nombreEntidad": "Hospital San Miguel",
+      "comentarios": "Problemas con el consumo de estupefacientes.",
+      "fechaCarga": "2017-11-12",
+      "idEntidad": 2,
+      "idEstado": 1,
+      "idPrioridad": 2,
+      "idUsuario": 0
+    },
+    {
+      "idSituacion": 3,
+      "nombreInformador": "Hector",
+      "apellidoInformador": "Paz",
+      "telefonoInformador": 1130859845,
+      "nombreMenor": " Francisco Gutierrez",
+      "fechaNacimiento": "2015-03-25",
+      "direccion": "Blasco Ibañez 2353",
+      "nombreEntidad": "Merendero Familia",
+      "comentarios": "Niña de 8 años encontrada sola. Menor en situación de abandono. Encontrada en la vía pública. Falta al colegio ",
+      "fechaCarga": "2025-03-12",
+      "idEntidad": 1,
+      "idEstado": 1,
+      "idPrioridad": 3,
+      "idUsuario": 0
+    },
+    {
+      "idSituacion": 4,
+      "nombreInformador": "Macarena",
+      "apellidoInformador": "Lago",
+      "nombreMenor": "Maia Gines",
+      "fechaNacimiento": "2010-05-07",
+      "direccion": "Mitre 50",
+      "nombreEntidad": "Hospital San Miguel",
+      "comentarios": "Ideación suicida.",
+      "fechaCarga": "2023-07-12",
+      "idEntidad": 1,
+      "idEstado": 1,
+      "idPrioridad": 3,
+      "idUsuario": 0
+    },
+    {
+      "idSituacion": 5,
+      "nombreInformador": "Macarena",
+      "apellidoInformador": "Lago",
+      "nombreMenor": "Nicolas Franco",
+      "fechaNacimiento": "2018-05-07",
+      "direccion": "Mitre 50",
+      "nombreEntidad": "Escuela Primaria N4",
+      "comentarios": "Víctima de bullying / ciberacoso.",
+      "fechaCarga": "2023-07-12",
+      "idEntidad": 1,
+      "idEstado": 1,
+      "idPrioridad": 3,
+      "idUsuario": 0
+    },
+    {
+      "idSituacion": 6,
+      "nombreInformador": "Milagros",
+      "apellidoInformador": "Enriquez",
+      "nombreMenor": "Ines Gutierrez",
+      "fechaNacimiento": "2013-05-07",
+      "direccion": "Gaspar Campos 1895",
+      "nombreEntidad": "Escuela Primaria N4",
+      "comentarios": "Necesidad de realizar algún deporte actividad física/artística en un entorno inclusivo.",
+      "fechaCarga": "2023-07-12",
+      "idEntidad": 1,
+      "idEstado": 1,
+      "idPrioridad": 3,
+      "idUsuario": 0
+    },
+    {
+      "idSituacion": 7,
+      "nombreInformador": "Alfonso",
+      "apellidoInformador": "Horten",
+      "nombreMenor": "Tomas Ferro",
+      "fechaNacimiento": "2019-05-07",
+      "direccion": "Anchorena 5250",
+      "nombreEntidad": "Merendero Familia",
+      "comentarios": "Ambiente hostil/violento en el hogar.",
+      "fechaCarga": "2023-07-12",
+      "idEntidad": 1,
+      "idEstado": 1,
+      "idPrioridad": 3,
+      "idUsuario": 0
+    }
+  ],
+  "Entidades": 
+  [
+  {
+    "idEntidad": 1,
+    "nombre": "Escuela N 4",
+    "direccion": "Av. Primera Junta 1108, San Miguel",
+    "mail": "escuelacuatro@gmail.com",
+    "telefono": "44552266"
+  },
+  {
+    "idEntidad": 2,
+    "nombre": "Hospital San Miguel",
+    "direccion": "Av. Primera Junta 1025, San Miguel",
+    "mail": "hospital@gmail.com",
+    "telefono": "44550000"
+  },
+  {
+    "idEntidad": 3,
+    "nombre": "Merendero familia",
+    "direccion": "Av.Mitre 489, San Miguel",
+    "mail": "merendero@gmail.com",
+    "telefono": "44552244"
+  },
+  {
+    "idEntidad": 4,
+    "nombre": "Otra",
+    "direccion": "Especifique en comentarios",
+    "mail": "N/A",
+    "telefono": "N/A"
+  }
+]
+}

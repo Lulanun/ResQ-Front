@@ -1,29 +1,7 @@
 //FUNCIONES PARA nuevaSituacion
 
-const entidades = [
-    {
-    idEntidad: 1,
-    nombre:"Escuela N 4",
-    direccion:"Av. Primera Junta 1108, San Miguel",
-    mail:"escuelacuatro@gmail.com",
-    telefono:"44552266"
-    },  
-    {
-    idEntidad: 2,
-    nombre:"Hospital San Miguel",
-    direccion:"Av. Primera Junta 1025, San Miguel",
-    mail:"hospital@gmail.com",
-    telefono:"44550000"
-    },
-    {
-    idEntidad: 3,
-    nombre:"Merendero familia",
-    direccion:"Av.Mitre 489, San Miguel",
-    mail:"merendero@gmail.com",
-    telefono:"44552244"
-    }    
-]
-
+let entidades = []
+const URL = "../db/data.json"
 const fechaCargaInput = document.getElementById("fechaCarga");
 fechaCargaInput.value = new Date().toISOString().split("T")[0];
 
@@ -31,6 +9,20 @@ let situaciones = JSON.parse(localStorage.getItem("NuevasSituaciones")) || [];
 let guardadas = JSON.parse(localStorage.getItem("Asignadas")) || [];
 let sinAsignar = JSON.parse(localStorage.getItem("NoAsignadas")) || [];
 
+function obtenerEntidades(){
+fetch(URL)
+.then(response => response.json())
+.then(data =>{
+entidades =data.Entidades
+inicializarFormulario() 
+}).catch( error =>
+Swal.fire({
+    icon: 'error',
+    title: 'Error al cargar datos',
+    text: 'No se pudieron cargar los datos. Por favor, recargá la página.'
+    })
+    )
+}
 
 function obtenerNuevoId() {
     const todasLasSituaciones = situaciones.concat(guardadas, sinAsignar);
@@ -42,6 +34,16 @@ function obtenerNuevoId() {
         }
     } 
     return idMasAlto + 1;
+}
+function inicializarFormulario() {
+const contenedor = document.getElementById("selectEntidad");
+contenedor.innerHTML = ""
+
+for (const entidad of entidades) {
+  const menu = document.createElement("option")
+  menu.value = entidad.idEntidad
+  menu.innerHTML = `${entidad.nombre}- ${entidad.direccion}`
+  contenedor.appendChild(menu)
 }
 
 const form = document.getElementById("formNuevaSituacion");
@@ -80,3 +82,6 @@ situaciones.push(nuevaSituacion);
 localStorage.setItem("NuevasSituaciones", JSON.stringify(situaciones));
 form.reset();
 });
+}
+
+obtenerEntidades()
